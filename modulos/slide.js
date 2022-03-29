@@ -58,7 +58,7 @@ export default class Slide {
   changeSlideOnEnd() {
     if (this.distance.movement > 120 && this.index.next !== undefined) {
       this.activeNextSlide();
-    } else if (this.distance.movement < - 120 !== undefined) {
+    } else if (this.distance.movement < -120 && this.index.prev !== undefined) {
       this.activePrevSlide();
     } else {
       this.changeSlide(this.index.active);
@@ -92,8 +92,9 @@ export default class Slide {
     });
   }
 
+
   slidesIndexNav(index) {
-    const last = this.slideArray.length - 1;
+    const last = this.slideArray.length-1;
     this.index = {
       prev: index ? index - 1 : undefined,
       active: index,
