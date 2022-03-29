@@ -11,6 +11,7 @@ ul {
 img {
   display: block;
   max-width: 100%;
+  border-radius: 10px;
 }
 
 .slide-wrapper {
@@ -21,9 +22,22 @@ img {
   display: flex;
 }
 
+.slide:hover {
+  will-change: transform;
+}
+
 .slide li {
   flex-shrink: 0;
   width: 80vw;
   max-width: 800px;
   margin: 0 20px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+  border-radius: 10px;
+  transform: scale(.8);
+  transition: .4s;
+}
+
+.slide li.ativo {
+  transform: scale(1);
 }
