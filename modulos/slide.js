@@ -58,7 +58,7 @@ export default class Slide {
   changeSlideOnEnd() {
     if (this.distance.movement > 120 && this.index.next !== undefined) {
       this.activeNextSlide();
-    } else if (this.distance < -120 !== undefined) {
+    } else if (this.distance.movement < - 120 !== undefined) {
       this.activePrevSlide();
     } else {
       this.changeSlide(this.index.active);
@@ -103,25 +103,29 @@ export default class Slide {
 
   changeSlide(index) {
     const activeSlide = this.slideArray[index];
-    this.moveSlide(this.slideArray[index].position);
+    this.moveSlide(activeSlide.position);
     this.slidesIndexNav(index);
     this.distance.finalPosition = activeSlide.position;
   }
 
   // navegação com Next-Prev
   activePrevSlide() {
-    if (this.index.prev !== undefined) this.changeSlide(this.index.prev);
+    if (this.index.prev !== undefined){
+        this.changeSlide(this.index.prev);
+    }
   }
 
   activeNextSlide() {
-    if (this.index.next !== undefined) this.changeSlide(this.index.next);
+    if (this.index.next !== undefined){
+        this.changeSlide(this.index.next);
+    }
   }
 
   init() {
     this.bindEvents();
+    this.transition(true)
     this.addSlideEvents();
     this.slidesConfig();
-    this.transition(true)
     return this;
   }
 }
